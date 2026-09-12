@@ -7,7 +7,7 @@ Personal portfolio built with plain HTML, CSS and JavaScript. No package install
 - `index.html` — About, project and experience content, navigation and contact links.
 - `styles.css` — Typography, spacing, colours and responsive layout.
 - `navigation.js` — Project views, URL hashes and browser back/forward navigation.
-- The résumé PDF is not included in this public repository; the page currently offers an email request link.
+- `James-Bell-Resume.pdf` — Downloadable résumé.
 
 ## Run locally
 
@@ -58,4 +58,4 @@ Use relative asset paths so the site works both locally and under a hosting subd
 
 The existing site is hosted at https://james-bell-portfolio.jimbo-s-bell.chatgpt.site/.
 
-This repository contains a copy of the site’s source, with the résumé download replaced by an email request link. After choosing to publish your résumé, you can add `James-Bell-Resume.pdf` at the root and replace that link with `<a href="James-Bell-Resume.pdf" download>Résumé</a>`. GitHub pushes do not automatically update that hosted site; no deployment integration is configured. Hosting and source synchronisation must be configured separately before treating GitHub as the live site's deployment source. The current site retains its existing access settings.
+This repository contains a copy of the site's source. GitHub pushes do not automatically update that hosted site; no deployment integration is configured. Hosting and source synchronisation must be configured separately before treating GitHub as the live site's deployment source. The current site retains its existing access settings.
