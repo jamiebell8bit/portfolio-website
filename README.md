@@ -11,20 +11,12 @@ Personal portfolio built with plain HTML, CSS and JavaScript. No package install
 
 ## Run locally
 
-Clone this repository and open it in VS Code:
-
-```bash
-git clone https://github.com/jamiebell8bit/portfolio-website.git
-cd portfolio-website
-```
-
-Open `index.html` directly in your browser, or serve this folder using Python:
 
 ```bash
 python -m http.server 8000
 ```
 
-Then open http://localhost:8000. On Windows, use `py -m http.server 8000` if needed.
+Then open http://localhost:8000
 
 ## Edit and push
 
