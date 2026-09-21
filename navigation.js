@@ -9,7 +9,7 @@
       if (link.hash === '#' + current.id) link.setAttribute('aria-current', 'page');
       else link.removeAttribute('aria-current');
     });
-    document.title = 'James Bell — ' + (current.id === 'about' ? 'About' : current.querySelector('h1').textContent);
+    document.title = 'James Bell — ' + (current.id === 'about' ? 'Portfolio' : current.querySelector('h1').textContent);
     if (moveFocus) {
       document.querySelector('main').focus({ preventScroll: true });
       window.scrollTo({ top: 0, behavior: 'instant' });
