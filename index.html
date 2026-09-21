@@ -3,89 +3,123 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="James Bell — Computer Engineering graduate from Queen’s University. Practical software, geospatial and engineering work.">
+<meta name="description" content="James Bell, Queen’s Computer Engineering graduate. Explore software, geospatial data, and hands-on engineering work.">
 <title>James Bell — Portfolio</title>
 <link rel="stylesheet" href="styles.css">
 <script src="navigation.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
-<div class="layout">
-<aside>
-<header><a class="name" href="#about">James Bell</a><p>Computer Engineering<br> Queen’s University, 2026</p></header>
-<nav aria-label="Portfolio">
-<a href="#about" aria-current="page">About</a>
-<h2 class="nav-label">Projects</h2>
-<a href="#wetmaps">WetMaps</a><a href="#qrate">qRate</a><a href="#receiptme">ReceiptMe</a>
-<h2 class="nav-label">Experience</h2>
-<a href="#direct-coil">Direct Coil</a>
-</nav>
-<footer><a href="James-Bell-Resume.pdf" download>Résumé <span>↓</span></a><a href="mailto:jimbo.s.bell@gmail.com">Email</a><a href="https://www.linkedin.com/in/james-bell13">LinkedIn</a><a href="https://github.com/jamiebell8bit">GitHub</a></footer>
-</aside>
+<header class="site-header shell">
+  <a class="name" href="#about">James Bell<span>.</span></a>
+  <nav aria-label="Main navigation">
+    <a href="#about" data-home-link aria-current="page">My work</a>
+    <a href="#direct-coil">Experience</a>
+    <a class="resume-link" href="James-Bell-Resume.pdf" download>Résumé <span aria-hidden="true">↓</span></a>
+  </nav>
+</header>
 <main id="content" tabindex="-1">
 <section id="about" class="page" aria-labelledby="about-heading">
-<p class="meta">Portfolio · 2026</p>
-<h1 id="about-heading">Practical engineering,<br>made visible.</h1>
-<p class="intro">I’m James Bell, a Computer Engineering graduate from Queen’s University. I build software, data systems, and practical engineering solutions.</p>
-<div class="quick-links"><a href="James-Bell-Resume.pdf" download>Download résumé <span>↓</span></a><a href="mailto:jimbo.s.bell@gmail.com">Get in touch <span>↗</span></a></div>
-<section class="work-showcase" aria-labelledby="work-heading">
-<div class="section-heading"><h2 id="work-heading">My work</h2><p>Selected projects and experience</p></div>
-<div class="project-gallery">
-<a class="project-card project-card--featured" href="#wetmaps">
-<span class="project-image"><img src="assets/wetmaps-cover.png" alt="Aerial wetlands with subtle satellite-mapping overlays"></span>
-<span class="project-card__copy"><span class="project-card__meta">Capstone · 2025–26</span><strong>WetMaps</strong><small>Mapping Canadian wetlands with machine learning and satellite data.</small><em>View project <b>↗</b></em></span>
-</a>
-<a class="project-card" href="#qrate">
-<span class="project-image"><img src="assets/qrate-cover.png" alt="Abstract course-review cards and stars in a dark blue environment"></span>
-<span class="project-card__copy"><span class="project-card__meta">Web application · 2025</span><strong>qRate</strong><small>A course and professor review platform built for students.</small><em>View project <b>↗</b></em></span>
-</a>
-<a class="project-card" href="#receiptme">
-<span class="project-image"><img src="assets/receiptme-cover.png" alt="Stylised receipt and spending-data visualisation"></span>
-<span class="project-card__copy"><span class="project-card__meta">Web application · 2025</span><strong>ReceiptMe</strong><small>Receipt tracking with personalised spending insights.</small><em>View project <b>↗</b></em></span>
-</a>
-<a class="project-card project-card--wide" href="#direct-coil">
-<span class="project-image"><img src="assets/direct-coil-cover.png" alt="Heat-transfer coil equipment with technical drawing overlays"></span>
-<span class="project-card__copy"><span class="project-card__meta">Internship · 2024–25</span><strong>Direct Coil</strong><small>Designing custom heat-transfer equipment for manufacturing.</small><em>View experience <b>↗</b></em></span>
-</a>
-</div>
+  <div class="intro shell">
+    <div><p class="eyebrow">Computer Engineering · Queen’s University ’26</p>
+    <h1 id="about-heading">Software. Data.<br><span>Hands-on engineering.</span></h1></div>
+    <div class="intro-note"><p>I’m James, a Computer Engineering graduate interested in how things work—and how to make them work better.</p>
+    <p class="availability">Based in Calgary. Open to graduate roles in Canada and the UK.</p>
+    <a class="text-link" href="mailto:jimbo.s.bell@gmail.com">Let’s talk <span aria-hidden="true">↗</span></a></div>
+  </div>
+  <section class="work-section" aria-labelledby="work-heading">
+    <div class="work-heading shell">
+      <div class="work-label"><h2 id="work-heading">My work</h2><span class="work-count">04</span></div>
+      <div class="carousel-controls" hidden>
+        <p class="interaction-hint">Hover to explore · Click for the story</p>
+        <button class="motion-toggle" type="button" aria-pressed="false" aria-label="Pause automatic project movement"><span class="motion-symbol" aria-hidden="true">Ⅱ</span><span class="motion-label">Pause</span></button>
+        <button class="arrow-button" type="button" data-direction="-1" aria-label="Previous project">←</button>
+        <button class="arrow-button" type="button" data-direction="1" aria-label="Next project">→</button>
+      </div>
+    </div>
+    <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Projects and experience">
+      <div class="carousel-track"><div class="project-group">
+        <a class="project-card wetmaps" href="#wetmaps" aria-label="WetMaps. Mapping Canadian wetlands with machine learning and satellite data. View details.">
+          <div class="card-visual">
+            <img src="assets/wetmaps-cover.png" alt="WetMaps concept illustration" fetchpriority="high">
+            <span class="card-type">Capstone project</span><span class="card-open" aria-hidden="true">↗</span>
+            <div class="card-caption"><h3>WetMaps</h3><p>Mapping Canadian wetlands with machine learning and satellite data.</p><span class="card-cta">Explore project <span aria-hidden="true">↗</span></span></div>
+          </div>
+          <div class="card-foot"><span>01 / ML &amp; geospatial data</span><span>2025–26</span></div>
+        </a>
+        <a class="project-card qrate" href="#qrate" aria-label="qRate. A platform for students to find and share course and professor reviews. View details.">
+          <div class="card-visual">
+            <img src="assets/qrate-cover.png" alt="qRate concept illustration">
+            <span class="card-type">Web application</span><span class="card-open" aria-hidden="true">↗</span>
+            <div class="card-caption"><h3>qRate</h3><p>A platform for students to find and share course and professor reviews.</p><span class="card-cta">Explore project <span aria-hidden="true">↗</span></span></div>
+          </div>
+          <div class="card-foot"><span>02 / Full-stack development</span><span>2025</span></div>
+        </a>
+        <a class="project-card receiptme" href="#receiptme" aria-label="ReceiptMe. Turning everyday receipts into personalised spending insights. View details.">
+          <div class="card-visual">
+            <img src="assets/receiptme-cover.png" alt="ReceiptMe concept illustration">
+            <span class="card-type">Web application</span><span class="card-open" aria-hidden="true">↗</span>
+            <div class="card-caption"><h3>ReceiptMe</h3><p>Turning everyday receipts into personalised spending insights.</p><span class="card-cta">Explore project <span aria-hidden="true">↗</span></span></div>
+          </div>
+          <div class="card-foot"><span>03 / Expenses &amp; AI insights</span><span>2025</span></div>
+        </a>
+        <a class="project-card direct-coil" href="#direct-coil" aria-label="Direct Coil. A year bringing custom heat-transfer equipment from drawings to production. View details.">
+          <div class="card-visual">
+            <img src="assets/direct-coil-cover.png" alt="Direct Coil concept illustration">
+            <span class="card-type">Engineering internship</span><span class="card-open" aria-hidden="true">↗</span>
+            <div class="card-caption"><h3>Direct Coil</h3><p>A year bringing custom heat-transfer equipment from drawings to production.</p><span class="card-cta">Explore experience <span aria-hidden="true">↗</span></span></div>
+          </div>
+          <div class="card-foot"><span>04 / Design &amp; manufacturing</span><span>2024–25</span></div>
+        </a>
+      </div></div>
+    </div>
+    <div class="work-bottom shell"><p>From satellite data to the manufacturing floor.</p><span class="swipe-hint">Swipe to explore →</span><span class="desktop-hint">Four projects. Different ways of solving problems.</span></div>
+  </section>
 </section>
-<p class="contact-note">Based in Calgary, open to graduate roles in Canada and the UK. Reach me at <a href="mailto:jimbo.s.bell@gmail.com">jimbo.s.bell@gmail.com</a>.</p>
-</section>
-<section id="wetmaps" class="page" aria-labelledby="wetmaps-heading" hidden>
-<p class="meta">Capstone project · October 2025 – April 2026</p><h1 id="wetmaps-heading">WetMaps</h1><img class="project-hero" src="assets/wetmaps-cover.png" alt="Aerial wetlands with satellite-mapping overlays">
+<section id="wetmaps" class="page detail shell" aria-labelledby="wetmaps-heading" hidden>
+<a class="back" href="#about">← All work</a>
+<div class="detail-heading">
+<p class="meta">Capstone project · October 2025 – April 2026</p><h1 id="wetmaps-heading">WetMaps</h1></div><div class="detail-grid"><figure><img class="project-hero" src="assets/wetmaps-cover.png" alt="Aerial wetlands with satellite-mapping overlays"><figcaption>Concept illustration</figcaption></figure><div class="detail-copy">
 <p class="intro">Mapping Canadian wetlands with machine learning and satellite data.</p>
 <p>WetMaps is a geospatial classification system built around AlphaEarth satellite embeddings. It brings together environmental data, model training, and cloud processing to map wetlands across Canada.</p>
 <h2>My contribution</h2>
 <ul><li>Built a cloud-based pipeline on Google Cloud for model training, inference, and processing large GeoTIFF files.</li><li>Automated testing and deployment with Docker and CI/CD to support reproducible experiments.</li><li>Evaluated model robustness using K-fold cross-validation, perturbation testing, and seed sensitivity analysis.</li></ul>
 <h2>Tools</h2><p>Python, Scikit-learn, Google Earth Engine, Google Cloud, Flask, React, Docker.</p>
-<a class="back" href="#about">Back to overview</a>
+</div></div><a class="next-project" href="#qrate"><span>Next project</span><strong>qRate ↗</strong></a>
 </section>
-<section id="qrate" class="page" aria-labelledby="qrate-heading" hidden>
-<p class="meta">Web application · Started May 2025</p><h1 id="qrate-heading">qRate</h1><img class="project-hero" src="assets/qrate-cover.png" alt="Abstract course-review cards and stars">
+<section id="qrate" class="page detail shell" aria-labelledby="qrate-heading" hidden>
+<a class="back" href="#about">← All work</a>
+<div class="detail-heading">
+<p class="meta">Web application · Started May 2025</p><h1 id="qrate-heading">qRate</h1></div><div class="detail-grid"><figure><img class="project-hero" src="assets/qrate-cover.png" alt="Abstract course-review cards and stars"><figcaption>Concept illustration</figcaption></figure><div class="detail-copy">
 <p class="intro">A place for students to share and explore course and professor reviews.</p>
 <p>I built and deployed a review platform using MongoDB, Express, React, and Node.js, with hosting on Microsoft Azure.</p>
 <h2>My contribution</h2><ul><li>Developed the application for students to publish and browse ratings.</li><li>Set up GitHub Actions to automate testing and deployment.</li><li>Implemented JWT authentication, input validation, and profanity filters.</li></ul>
 <h2>Tools</h2><p>React, Express, Node.js, MongoDB, Microsoft Azure, GitHub Actions.</p>
-<a class="back" href="#about">Back to overview</a>
+</div></div><a class="next-project" href="#receiptme"><span>Next project</span><strong>ReceiptMe ↗</strong></a>
 </section>
-<section id="receiptme" class="page" aria-labelledby="receiptme-heading" hidden>
-<p class="meta">Web application · June 2025</p><h1 id="receiptme-heading">ReceiptMe</h1><img class="project-hero" src="assets/receiptme-cover.png" alt="Stylised receipt and spending-data visualisation">
+<section id="receiptme" class="page detail shell" aria-labelledby="receiptme-heading" hidden>
+<a class="back" href="#about">← All work</a>
+<div class="detail-heading">
+<p class="meta">Web application · June 2025</p><h1 id="receiptme-heading">ReceiptMe</h1></div><div class="detail-grid"><figure><img class="project-hero" src="assets/receiptme-cover.png" alt="Stylised receipt and spending-data visualisation"><figcaption>Concept illustration</figcaption></figure><div class="detail-copy">
 <p class="intro">An expense tracker with receipt uploads and personalised spending summaries.</p>
 <p>ReceiptMe lets users track expenses and explore their spending through an application built with MongoDB, Express, React, and Node.js.</p>
 <h2>My contribution</h2><ul><li>Built receipt-upload and expense-tracking features.</li><li>Integrated the Gemini API to produce personalised 30-day summaries from users’ spending data.</li><li>Implemented Google OAuth and spending comparisons by age, location, or income.</li></ul>
 <h2>Tools</h2><p>React, Express, Node.js, MongoDB, Gemini API, Google OAuth.</p>
-<a class="back" href="#about">Back to overview</a>
+</div></div><a class="next-project" href="#direct-coil"><span>Next experience</span><strong>Direct Coil ↗</strong></a>
 </section>
-<section id="direct-coil" class="page" aria-labelledby="coil-heading" hidden>
-<p class="meta">Internship · August 2024 – August 2025</p><h1 id="coil-heading">Direct Coil</h1><img class="project-hero" src="assets/direct-coil-cover.png" alt="Custom heat-transfer coil equipment and technical drawings">
+<section id="direct-coil" class="page detail shell" aria-labelledby="coil-heading" hidden>
+<a class="back" href="#about">← All work</a>
+<div class="detail-heading">
+<p class="meta">Internship · August 2024 – August 2025</p><h1 id="coil-heading">Direct Coil</h1></div><div class="detail-grid"><figure><img class="project-hero" src="assets/direct-coil-cover.png" alt="Custom heat-transfer coil equipment and technical drawings"><figcaption>Concept illustration · Not an actual Direct Coil product.</figcaption></figure><div class="detail-copy">
 <p class="intro">Engineering design experience on the manufacturing floor.</p>
 <p>During my year at Direct Coil in Kingston, Ontario, I worked on drawings for heat-transfer equipment, including fluid coolers and condensers. Rotating through departments helped me understand the products, manufacturing processes, and practical constraints behind each design.</p>
 <h2>My work</h2><ul><li>Created 2D and 3D parts drawings in AutoCAD.</li><li>Worked with manufacturing teams to resolve production challenges and improve manufacturability.</li><li>Communicated with customers to resolve design conflicts and balance performance with practicality.</li><li>Contributed to revisions of design standards and managed time-sensitive jobs.</li></ul>
 <h2>Areas of experience</h2><p>AutoCAD, heat-transfer equipment, manufacturing processes, design standards, customer communication.</p>
-<a class="back" href="#about">Back to overview</a>
+</div></div><a class="next-project" href="#wetmaps"><span>Next project</span><strong>WetMaps ↗</strong></a>
 </section>
-<noscript><p>Enable JavaScript to switch between project views. My <a href="James-Bell-Resume.pdf">résumé</a> includes all project and experience details.</p></noscript>
+
+<noscript><style>.page[hidden]{display:block!important}.carousel{overflow-x:auto}</style><p class="shell">JavaScript is off. Scroll or swipe through the projects; details are below.</p></noscript>
 </main>
-</div>
+<footer class="site-footer shell"><p>James Bell <span>Canadian &amp; UK citizen</span></p><div><a href="mailto:jimbo.s.bell@gmail.com">Email</a><a href="https://www.linkedin.com/in/james-bell13">LinkedIn</a><a href="https://github.com/jamiebell8bit">GitHub</a></div></footer>
 </body>
 </html>
