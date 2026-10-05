@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="James Bell, Queen’s Computer Engineering graduate. Explore software, geospatial data, and hands-on engineering work.">
+<meta name="description" content="James Bell, Queen’s Computer Engineering graduate. Take a look at my projects and engineering experience.">
 <title>James Bell — Portfolio</title>
-<link rel="stylesheet" href="styles.css">
-<script src="navigation.js" defer></script>
+<link rel="stylesheet" href="styles.css?v=6">
+<script src="navigation.js?v=6" defer></script>
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
@@ -22,7 +22,7 @@
 <section id="about" class="page" aria-labelledby="about-heading">
   <div class="intro shell">
     <div><p class="eyebrow">Computer Engineering · Queen’s University ’26</p>
-    <h1 id="about-heading">Software. Data.<br><span>Hands-on engineering.</span></h1></div>
+    <h1 id="about-heading">Take a look at my<br><span>projects and experience.</span></h1></div>
     <div class="intro-note"><p>I’m James, a Computer Engineering graduate interested in how things work—and how to make them work better.</p>
     <p class="availability">Based in Calgary. Open to graduate roles in Canada and the UK.</p>
     <a class="text-link" href="mailto:jimbo.s.bell@gmail.com">Let’s talk <span aria-hidden="true">↗</span></a></div>
@@ -30,26 +30,20 @@
   <section class="work-section" aria-labelledby="work-heading">
     <div class="work-heading shell">
       <div class="work-label"><h2 id="work-heading">My work</h2></div>
-      <div class="carousel-controls" hidden>
-        <p class="interaction-hint">Hover to explore · Click for the story</p>
-        <button class="motion-toggle" type="button" aria-pressed="false" aria-label="Pause automatic project movement"><span class="motion-symbol" aria-hidden="true">Ⅱ</span><span class="motion-label">Pause</span></button>
-        <button class="arrow-button" type="button" data-direction="-1" aria-label="Previous project">←</button>
-        <button class="arrow-button" type="button" data-direction="1" aria-label="Next project">→</button>
-      </div>
     </div>
-    <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Projects and experience">
+    <div class="carousel" role="region" aria-label="Projects and experience">
       <div class="carousel-track"><div class="project-group">
-        <a class="project-card wetmaps" href="#wetmaps" aria-label="WetMaps. Mapping Canadian wetlands with machine learning and satellite data. View details.">
+        <a class="project-card wetmaps" href="#wetmaps" aria-label="WetMaps. Mapping Canada’s wetlands using satellite data. View details.">
           <div class="card-visual">
-            <img src="assets/wetmaps-cover.png" alt="WetMaps concept illustration" fetchpriority="high">
+            <img src="pics/wetmaps.png" alt="WetMaps wetland classification map of Canada" fetchpriority="high">
             <span class="card-type">Capstone project</span><span class="card-open" aria-hidden="true">↗</span>
-            <div class="card-caption"><h3>WetMaps</h3><p>Mapping Canadian wetlands with machine learning and satellite data.</p><span class="card-cta">Explore project <span aria-hidden="true">↗</span></span></div>
+            <div class="card-caption"><h3>WetMaps</h3><p>Mapping Canada’s wetlands using satellite data.</p><span class="card-cta">Explore project <span aria-hidden="true">↗</span></span></div>
           </div>
           <div class="card-foot"><span>01 / ML &amp; geospatial data</span><span>2025–26</span></div>
         </a>
         <a class="project-card qrate" href="#qrate" aria-label="qRate. A platform for students to find and share course and professor reviews. View details.">
           <div class="card-visual">
-            <img src="assets/qrate-cover.png" alt="qRate concept illustration">
+            <img src="pics/qrate.png" alt="qRate homepage with course and professor review links">
             <span class="card-type">Web application</span><span class="card-open" aria-hidden="true">↗</span>
             <div class="card-caption"><h3>qRate</h3><p>A platform for students to find and share course and professor reviews.</p><span class="card-cta">Explore project <span aria-hidden="true">↗</span></span></div>
           </div>
@@ -57,7 +51,7 @@
         </a>
         <a class="project-card receiptme" href="#receiptme" aria-label="ReceiptMe. Turning everyday receipts into personalised spending insights. View details.">
           <div class="card-visual">
-            <img src="assets/receiptme-cover.png" alt="ReceiptMe concept illustration">
+            <img src="pics/ReceiptMe.jpg" alt="ReceiptMe dashboard showing sample expenses and a spending chart">
             <span class="card-type">Web application</span><span class="card-open" aria-hidden="true">↗</span>
             <div class="card-caption"><h3>ReceiptMe</h3><p>Turning everyday receipts into personalised spending insights.</p><span class="card-cta">Explore project <span aria-hidden="true">↗</span></span></div>
           </div>
@@ -65,7 +59,7 @@
         </a>
         <a class="project-card direct-coil" href="#direct-coil" aria-label="Direct Coil. A year bringing custom heat-transfer equipment from drawings to production. View details.">
           <div class="card-visual">
-            <img src="assets/direct-coil-cover.png" alt="Direct Coil concept illustration">
+            <img src="pics/DC.jpg" alt="Group photograph from my time at Direct Coil">
             <span class="card-type">Engineering internship</span><span class="card-open" aria-hidden="true">↗</span>
             <div class="card-caption"><h3>Direct Coil</h3><p>A year bringing custom heat-transfer equipment from drawings to production.</p><span class="card-cta">Explore experience <span aria-hidden="true">↗</span></span></div>
           </div>
@@ -79,18 +73,39 @@
 <section id="wetmaps" class="page detail shell" aria-labelledby="wetmaps-heading" hidden>
 <a class="back" href="#about">← All work</a>
 <div class="detail-heading">
-<p class="meta">Capstone project · October 2025 – April 2026</p><h1 id="wetmaps-heading">WetMaps</h1></div><div class="detail-grid"><figure><img class="project-hero" src="assets/wetmaps-cover.png" alt="Aerial wetlands with satellite-mapping overlays"><figcaption>Concept illustration</figcaption></figure><div class="detail-copy">
-<p class="intro">Mapping Canadian wetlands with machine learning and satellite data.</p>
-<p>WetMaps is a geospatial classification system built around AlphaEarth satellite embeddings. It brings together environmental data, model training, and cloud processing to map wetlands across Canada.</p>
+<p class="meta">Capstone project · October 2025 – April 2026</p><h1 id="wetmaps-heading">WetMaps</h1></div><div class="detail-grid">
+<div class="project-gallery" aria-label="WetMaps screenshots">
+  <figure>
+    <a class="project-image" href="pics/wetmaps.png" target="_blank" rel="noopener" aria-label="Enlarge the WetMaps classification map">
+      <img class="project-hero" src="pics/wetmaps.png" alt="WetMaps wetland classification map of Canada">
+    </a>
+    <figcaption>Map of wetland types across Canada.</figcaption>
+  </figure>
+  <figure>
+    <a class="project-image map-closeup" href="pics/wetmapsChange.png?v=2" target="_blank" rel="noopener" aria-label="Enlarge the WetMaps 2017–2024 change-detection map">
+      <img class="project-hero" src="pics/wetmapsChange.png?v=2" alt="WetMaps comparison of wetlands in 2017 and 2024, with light green showing gain and pink showing loss" loading="lazy">
+    </a>
+    <figcaption>Wetland change detection, 2017–2024. Green indicates wetland gain; red indicates wetland loss.</figcaption>
+  </figure>
+  <p class="gallery-hint">Click an image to view it full-size.</p>
+</div><div class="detail-copy">
+<p class="intro">Mapping Canada’s wetlands using satellite data.</p>
+<p>For our four-person engineering capstone at Queen’s, we built a tool that identifies wetlands and shows them on a map. The aim was to help update wetland maps without having to survey every area by hand.</p>
+<h2>How it works</h2>
+<p>We used existing wetland maps as examples to teach an AI model what different wetland types look like in satellite data. It then predicted where bogs, fens, marshes, swamps, and shallow water were located in other areas.</p>
+<p>Our first version produced patchy maps. Looking at the surrounding area, rather than each point on its own, helped create clearer boundaries. Users could explore the finished maps in Google Earth Engine, an online mapping tool.</p>
 <h2>My contribution</h2>
-<ul><li>Built a cloud-based pipeline on Google Cloud for model training, inference, and processing large GeoTIFF files.</li><li>Automated testing and deployment with Docker and CI/CD to support reproducible experiments.</li><li>Evaluated model robustness using K-fold cross-validation, perturbation testing, and seed sensitivity analysis.</li></ul>
-<h2>Tools</h2><p>Python, Scikit-learn, Google Earth Engine, Google Cloud, Flask, React, Docker.</p>
+<ul><li>Built the cloud-based process for handling large satellite files and turning the computer’s predictions into maps.</li><li>Automated tests so we could repeat experiments consistently.</li><li>Checked how reliably the system worked with different data and across parts of Canada.</li></ul>
+<h2>What we found</h2>
+<p>The system averaged 87% accuracy across five rounds of testing, above our 80% target.</p>
+<p>We also compared maps from 2017 and 2024 to highlight where Ontario’s wetlands appeared to grow or shrink. Some differences may come from changes in the satellite data rather than real changes on the ground, so these results need further checking.</p>
+<h2>Tools</h2><p>Python, TensorFlow/Keras, Scikit-learn, Google Earth Engine, Google Cloud Storage, Google Colab, Docker.</p>
 </div></div><a class="next-project" href="#qrate"><span>Next project</span><strong>qRate ↗</strong></a>
 </section>
 <section id="qrate" class="page detail shell" aria-labelledby="qrate-heading" hidden>
 <a class="back" href="#about">← All work</a>
 <div class="detail-heading">
-<p class="meta">Web application · Started May 2025</p><h1 id="qrate-heading">qRate</h1></div><div class="detail-grid"><figure><img class="project-hero" src="assets/qrate-cover.png" alt="Abstract course-review cards and stars"><figcaption>Concept illustration</figcaption></figure><div class="detail-copy">
+<p class="meta">Web application · Started May 2025</p><h1 id="qrate-heading">qRate</h1></div><div class="detail-grid"><figure><a class="project-image" href="pics/qrate.png" target="_blank" rel="noopener" aria-label="Enlarge the qRate homepage"><img class="project-hero" src="pics/qrate.png" alt="qRate homepage with course and professor review links"></a><figcaption>qRate homepage.</figcaption></figure><div class="detail-copy">
 <p class="intro">A place for students to share and explore course and professor reviews.</p>
 <p>I built and deployed a review platform using MongoDB, Express, React, and Node.js, with hosting on Microsoft Azure.</p>
 <h2>My contribution</h2><ul><li>Developed the application for students to publish and browse ratings.</li><li>Set up GitHub Actions to automate testing and deployment.</li><li>Implemented JWT authentication, input validation, and profanity filters.</li></ul>
@@ -100,7 +115,22 @@
 <section id="receiptme" class="page detail shell" aria-labelledby="receiptme-heading" hidden>
 <a class="back" href="#about">← All work</a>
 <div class="detail-heading">
-<p class="meta">Web application · June 2025</p><h1 id="receiptme-heading">ReceiptMe</h1></div><div class="detail-grid"><figure><img class="project-hero" src="assets/receiptme-cover.png" alt="Stylised receipt and spending-data visualisation"><figcaption>Concept illustration</figcaption></figure><div class="detail-copy">
+<p class="meta">Web application · June 2025</p><h1 id="receiptme-heading">ReceiptMe</h1></div><div class="detail-grid">
+<div class="project-gallery" aria-label="ReceiptMe screenshots">
+  <figure>
+    <a class="project-image" href="pics/ReceiptMe.jpg" target="_blank" rel="noopener" aria-label="Enlarge the ReceiptMe dashboard">
+      <img class="project-hero" src="pics/ReceiptMe.jpg" alt="ReceiptMe dashboard showing sample expenses and a spending chart">
+    </a>
+    <figcaption>Dashboard running locally with sample spending data.</figcaption>
+  </figure>
+  <figure>
+    <a class="project-image" href="pics/ReceiptExample.png" target="_blank" rel="noopener" aria-label="Enlarge the receipt classification example">
+      <img class="project-hero" src="pics/ReceiptExample.png" alt="Wendy’s receipt alongside three Dining and Takeout classifications and a total of 15.80 US dollars" loading="lazy">
+    </a>
+    <figcaption>Receipt and item classifications in the local preview. This view was added for the preview; classifications were prepared locally, not generated by Gemini.</figcaption>
+  </figure>
+  <p class="gallery-hint">Click an image to view it full-size.</p>
+</div><div class="detail-copy">
 <p class="intro">An expense tracker with receipt uploads and personalised spending summaries.</p>
 <p>ReceiptMe lets users track expenses and explore their spending through an application built with MongoDB, Express, React, and Node.js.</p>
 <h2>My contribution</h2><ul><li>Built receipt-upload and expense-tracking features.</li><li>Integrated the Gemini API to produce personalised 30-day summaries from users’ spending data.</li><li>Implemented Google OAuth and spending comparisons by age, location, or income.</li></ul>
@@ -110,9 +140,25 @@
 <section id="direct-coil" class="page detail shell" aria-labelledby="coil-heading" hidden>
 <a class="back" href="#about">← All work</a>
 <div class="detail-heading">
-<p class="meta">Internship · August 2024 – August 2025</p><h1 id="coil-heading">Direct Coil</h1></div><div class="detail-grid"><figure><img class="project-hero" src="assets/direct-coil-cover.png" alt="Custom heat-transfer coil equipment and technical drawings"><figcaption>Concept illustration · Not an actual Direct Coil product.</figcaption></figure><div class="detail-copy">
+<p class="meta">Internship · August 2024 – August 2025</p><h1 id="coil-heading">Direct Coil</h1></div><div class="detail-grid">
+<div class="project-gallery" aria-label="Direct Coil photographs">
+  <figure>
+    <a class="project-image" href="pics/DC.jpg" target="_blank" rel="noopener" aria-label="Enlarge the Direct Coil group photograph">
+      <img class="project-hero" src="pics/DC.jpg" alt="Group photograph from my time at Direct Coil">
+    </a>
+    <figcaption>A group photo from my time at Direct Coil.</figcaption>
+  </figure>
+  <figure>
+    <a class="project-image" href="pics/DCexample.jpg" target="_blank" rel="noopener" aria-label="Enlarge the Direct Coil manufacturing photographs">
+      <img class="project-hero" src="pics/DCexample.jpg" alt="Three factory photographs showing large heat-transfer coils at Direct Coil" loading="lazy">
+    </a>
+    <figcaption>Heat-transfer coils on the manufacturing floor.</figcaption>
+  </figure>
+  <p class="gallery-hint">Click an image to view it full-size.</p>
+</div><div class="detail-copy">
 <p class="intro">Engineering design experience on the manufacturing floor.</p>
 <p>During my year at Direct Coil in Kingston, Ontario, I worked on drawings for heat-transfer equipment, including fluid coolers and condensers. Rotating through departments helped me understand the products, manufacturing processes, and practical constraints behind each design.</p>
+<p>Highly customized jobs with tight deadlines were a constant challenge. I kept in close contact with customers and the manufacturing department to work through design questions, communicate changes, and keep everyone clear on what each job needed.</p>
 <h2>My work</h2><ul><li>Created 2D and 3D parts drawings in AutoCAD.</li><li>Worked with manufacturing teams to resolve production challenges and improve manufacturability.</li><li>Communicated with customers to resolve design conflicts and balance performance with practicality.</li><li>Contributed to revisions of design standards and managed time-sensitive jobs.</li></ul>
 <h2>Areas of experience</h2><p>AutoCAD, heat-transfer equipment, manufacturing processes, design standards, customer communication.</p>
 </div></div><a class="next-project" href="#wetmaps"><span>Next project</span><strong>WetMaps ↗</strong></a>
@@ -121,5 +167,17 @@
 <noscript><style>.page[hidden]{display:block!important}.carousel{overflow-x:auto}</style><p class="shell">JavaScript is off. Scroll or swipe through the projects; details are below.</p></noscript>
 </main>
 <footer class="site-footer shell"><p>James Bell <span>Canadian &amp; UK citizen</span></p><div><a href="mailto:jimbo.s.bell@gmail.com">Email</a><a href="https://www.linkedin.com/in/james-bell13">LinkedIn</a><a href="https://github.com/jamiebell8bit">GitHub</a></div></footer>
+<dialog id="image-viewer" class="image-viewer" aria-label="Expanded project image" aria-describedby="image-viewer-caption">
+  <div class="image-viewer-controls" aria-label="Image controls">
+    <button class="image-viewer-close" type="button" aria-label="Close image" autofocus><span aria-hidden="true">×</span></button>
+  </div>
+  <figure>
+    <div id="image-viewer-viewport" class="image-viewer-viewport" tabindex="0" role="region" aria-label="Image area. Scroll to zoom, drag to move, or double-click to reset. Keyboard: plus and minus zoom; zero resets.">
+      <div id="image-viewer-canvas" class="image-viewer-canvas"><img id="image-viewer-image" alt="" draggable="false"></div>
+    </div>
+    <figcaption id="image-viewer-caption"></figcaption>
+  </figure>
+  <p class="image-viewer-hint">Scroll to zoom. Drag to move around. Double-click to reset.</p>
+</dialog>
 </body>
 </html>

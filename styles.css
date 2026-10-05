@@ -168,3 +168,235 @@ figcaption { font-size: .75rem; line-height: 1.6; color: var(--muted); margin-to
   *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
   .project-card:hover, .project-card:focus-visible { transform: none; }
 }
+
+/* Static project grid */
+.intro h1 {
+  font-size: clamp(2.25rem, 3.6vw, 3.75rem);
+}
+
+.project-gallery {
+  display: grid;
+  gap: 26px;
+  min-width: 0;
+}
+
+.project-image {
+  display: block;
+  border-radius: 8px;
+  cursor: zoom-in;
+}
+
+.project-image:hover {
+  outline: 1px solid var(--line);
+  outline-offset: 4px;
+}
+
+.map-closeup {
+  width: min(100%, 440px);
+}
+
+.gallery-hint {
+  font-size: .75rem;
+  color: var(--muted);
+}
+
+/* Enlarged images stay on the page and can be dismissed with X or Escape. */
+body.image-viewer-open { overflow: hidden; }
+.image-viewer {
+  width: min(94vw, 1400px);
+  max-width: none;
+  max-height: 94vh;
+  max-height: 94dvh;
+  margin: auto;
+  padding: 16px 20px 20px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 24px 80px #0006;
+}
+.image-viewer::backdrop { background: #101917d9; }
+.image-viewer-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.image-viewer-controls button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: white;
+  font-size: 24px;
+  line-height: 1;
+}
+.image-viewer-close { margin-left: auto; }
+.image-viewer-controls button:hover:not(:disabled) { background: var(--ink); color: white; }
+.image-viewer-viewport {
+  height: min(62vh, 720px);
+  height: min(62dvh, 720px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  background: #edf0ee;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.image-viewer-viewport:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.image-viewer-canvas {
+  position: relative;
+  min-width: 100%;
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+}
+.image-viewer-viewport.is-zoomed { cursor: grab; }
+.image-viewer-viewport.is-dragging { cursor: grabbing; }
+.image-viewer img {
+  display: block;
+  max-width: none;
+  max-height: none;
+  user-select: none;
+}
+.image-viewer figcaption { text-align: center; margin-top: 16px; }
+.image-viewer-hint { text-align: center; font-size: .75rem; color: var(--muted); margin-top: 8px; }
+
+.carousel {
+  width: min(100% - var(--gutter) * 2, 1320px);
+  margin-inline: auto;
+  padding: 32px 0 40px;
+  overflow: visible;
+  scroll-snap-type: none;
+}
+
+.carousel-track {
+  display: block;
+  width: auto;
+  transform: none;
+}
+
+.project-group {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 36px;
+  padding: 0;
+}
+
+.carousel .project-card {
+  width: 100%;
+  min-width: 0;
+  position: relative;
+  transition: transform 280ms ease;
+}
+
+.carousel .card-visual {
+  height: auto;
+  background: white;
+  border: 1px solid var(--line);
+  box-shadow: 0 6px 18px #18211f0d;
+}
+
+.carousel .card-visual::after {
+  display: none;
+}
+
+/* Keep the complete screenshots visible */
+.carousel .card-visual img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+}
+
+/* Fill the image area for the Direct Coil photograph */
+.carousel .direct-coil .card-visual img {
+  object-fit: cover;
+}
+
+.carousel .card-type,
+.carousel .card-open {
+  background: #fffffff2;
+  color: var(--ink);
+  text-shadow: none;
+}
+
+.carousel .card-type {
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
+.carousel .card-open {
+  border-color: var(--line);
+}
+
+/* Put the project information below the image */
+.carousel .card-caption {
+  position: static;
+  padding: 22px;
+  color: var(--ink);
+}
+
+.carousel .project-card .card-caption p {
+  max-height: none;
+  opacity: 1;
+  overflow: visible;
+  transform: none;
+  color: var(--muted);
+}
+
+.carousel .project-card .card-cta {
+  max-height: none;
+  opacity: 1;
+  margin-top: 14px;
+  color: var(--accent);
+}
+
+.work-bottom .swipe-hint {
+  display: none;
+}
+
+/* Show complete images on the project detail pages too */
+.project-hero {
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
+/* Enlarge the whole card on hover */
+@media (hover: hover) and (pointer: fine) {
+  .carousel .project-card:hover {
+    transform: translateY(-6px) scale(1.06);
+    z-index: 3;
+  }
+
+  .carousel .project-card:hover .card-visual {
+    box-shadow: 0 20px 40px #18211f26;
+  }
+}
+
+/* Give keyboard users the same effect */
+.carousel .project-card:focus-visible {
+  transform: translateY(-6px) scale(1.06);
+  z-index: 3;
+}
+
+/* Stack the cards on smaller screens */
+@media (max-width: 760px) {
+  .project-group {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .carousel .project-card:hover,
+  .carousel .project-card:focus-visible {
+    transform: none;
+  }
+}

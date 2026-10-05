@@ -1,132 +1,158 @@
 (() => {
   'use strict';
+
   const pages = [...document.querySelectorAll('.page')];
   const main = document.querySelector('main');
   const home = document.querySelector('#about');
-  const carousel = document.querySelector('.carousel');
-  const track = document.querySelector('.carousel-track');
-  const group = document.querySelector('.project-group');
-  const cards = [...group.children];
-  const controls = document.querySelector('.carousel-controls');
-  const motionButton = document.querySelector('.motion-toggle');
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  const touchLayout = matchMedia('(max-width: 760px), (pointer: coarse)');
-  let offset = 0;
-  let cycleWidth = 0;
-  let looping = false;
-  let userPaused = false;
-  let hovered = false;
-  let keyboardFocused = false;
-  let lastTime = 0;
-  let frame = 0;
-  let navigatingUntil = 0;
+  const imageViewer = document.querySelector('#image-viewer');
+  const viewerImage = document.querySelector('#image-viewer-image');
+  const viewerCaption = document.querySelector('#image-viewer-caption');
+  const viewerViewport = document.querySelector('#image-viewer-viewport');
+  const viewerCanvas = document.querySelector('#image-viewer-canvas');
+  let zoom = 1;
+  let drag = null;
+  let imageTrigger = null;
 
-  // Visual copies create a seamless loop. Only the original four links enter
-  // the tab order and screen-reader tree. Copies still work with the mouse.
-  for (let i = 0; i < 2; i++) {
-    const copy = group.cloneNode(true);
-    copy.dataset.copy = 'true';
-    copy.setAttribute('aria-hidden', 'true');
-    copy.querySelectorAll('a').forEach(link => { link.tabIndex = -1; });
-    track.append(copy);
+  function renderZoom(resetPosition = false, anchor = null) {
+    if (!imageViewer.open || !viewerImage.naturalWidth) return;
+    const oldWidth = viewerImage.offsetWidth || 1;
+    const oldHeight = viewerImage.offsetHeight || 1;
+    const viewportBounds = viewerViewport.getBoundingClientRect();
+    const focusX = anchor ? anchor.clientX - viewportBounds.left - viewerViewport.clientLeft : viewerViewport.clientWidth / 2;
+    const focusY = anchor ? anchor.clientY - viewportBounds.top - viewerViewport.clientTop : viewerViewport.clientHeight / 2;
+    const centerX = (viewerViewport.scrollLeft + focusX - viewerImage.offsetLeft) / oldWidth;
+    const centerY = (viewerViewport.scrollTop + focusY - viewerImage.offsetTop) / oldHeight;
+    const ratio = viewerImage.naturalWidth / viewerImage.naturalHeight;
+    // Use the full inner area so scrollbars do not change the fitted scale.
+    const fitWidth = Math.min(viewerViewport.offsetWidth - viewerViewport.clientLeft * 2,
+      (viewerViewport.offsetHeight - viewerViewport.clientTop * 2) * ratio);
+    const width = Math.round(fitWidth * zoom);
+    const height = Math.round(width / ratio);
+    viewerImage.style.width = width + 'px';
+    viewerImage.style.height = height + 'px';
+    viewerCanvas.style.width = width + 'px';
+    viewerCanvas.style.height = height + 'px';
+    viewerViewport.scrollLeft = resetPosition ? 0 : viewerImage.offsetLeft + Math.max(0, Math.min(1, centerX)) * width - focusX;
+    viewerViewport.scrollTop = resetPosition ? 0 : viewerImage.offsetTop + Math.max(0, Math.min(1, centerY)) * height - focusY;
+    viewerViewport.classList.toggle('is-zoomed', zoom > 1);
   }
 
-  function draw() {
-    track.style.transform = looping ? 'translate3d(' + (-offset) + 'px, 0, 0)' : '';
+  function changeZoom(action) {
+    zoom = action === 'fit' ? 1 : Math.max(1, Math.min(6, zoom * (action === 'in' ? 1.5 : 1 / 1.5)));
+    renderZoom(action === 'fit');
   }
-  function shouldMove() {
-    return looping && !userPaused && !hovered && !keyboardFocused && !home.hidden && !document.hidden;
-  }
-  function tick(time) {
-    const elapsed = lastTime ? Math.min(time - lastTime, 50) : 0;
-    lastTime = time;
-    if (shouldMove() && time > navigatingUntil && cycleWidth > 0) {
-      offset = (offset + elapsed * 0.028) % cycleWidth; // 28 pixels/second.
-      draw();
-    }
-    frame = requestAnimationFrame(tick);
-  }
-  function updateMotionLabel() {
-    motionButton.setAttribute('aria-pressed', String(userPaused));
-    motionButton.setAttribute('aria-label', userPaused ? 'Resume automatic project movement' : 'Pause automatic project movement');
-    motionButton.querySelector('.motion-label').textContent = userPaused ? 'Play' : 'Pause';
-    motionButton.querySelector('.motion-symbol').textContent = userPaused ? '▷' : 'Ⅱ';
-  }
-  function configure() {
-    if (home.hidden) return;
-    looping = !touchLayout.matches && !reducedMotion.matches;
-    carousel.classList.toggle('is-looping', looping);
-    track.querySelectorAll('[data-copy]').forEach(copy => { copy.hidden = !looping; });
-    motionButton.hidden = !looping;
-    cycleWidth = group.getBoundingClientRect().width;
-    offset = cycleWidth ? offset % cycleWidth : 0;
-    carousel.scrollLeft = 0;
-    draw();
-    updateMotionLabel();
-  }
-  function render(moveFocus = false) {
-    const id = location.hash.slice(1) || 'about';
-    // The skip link changes focus, not the displayed project.
-    if (id === 'content') { main.focus(); return; }
-    const current = pages.find(page => page.id === id) || home;
-    pages.forEach(page => { page.hidden = page !== current; });
-    document.querySelectorAll('.site-header nav a[href^="#"]').forEach(link => {
-      const active = link.hash === '#' + current.id || (link.hasAttribute('data-home-link') && current.id !== 'direct-coil');
-      if (active) link.setAttribute('aria-current', 'page');
-      else link.removeAttribute('aria-current');
+
+  viewerViewport.addEventListener('wheel', event => {
+    if (!imageViewer.open || !viewerImage.naturalWidth || event.deltaY === 0) return;
+    event.preventDefault();
+    // Normalize mouse wheels and trackpads, then zoom toward the pointer.
+    const delta = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? viewerViewport.clientHeight : 1);
+    const nextZoom = Math.max(1, Math.min(6, zoom * Math.exp(-Math.max(-120, Math.min(120, delta)) * 0.002)));
+    if (nextZoom === zoom) return;
+    zoom = nextZoom;
+    renderZoom(false, event);
+  }, { passive: false });
+  viewerViewport.addEventListener('dblclick', () => changeZoom('fit'));
+  viewerImage.addEventListener('load', () => renderZoom(true));
+  window.addEventListener('resize', () => renderZoom());
+  imageViewer.addEventListener('keydown', event => {
+    if (event.ctrlKey || event.metaKey || event.altKey) return;
+    const action = event.key === '+' || event.key === '=' ? 'in' : event.key === '-' ? 'out' : event.key === '0' ? 'fit' : null;
+    if (action) { event.preventDefault(); changeZoom(action); }
+  });
+  viewerViewport.addEventListener('pointerdown', event => {
+    if (event.pointerType !== 'mouse' || event.button !== 0 || zoom <= 1) return;
+    event.preventDefault();
+    viewerViewport.focus({ preventScroll: true });
+    drag = { x: event.clientX, y: event.clientY, left: viewerViewport.scrollLeft, top: viewerViewport.scrollTop };
+    viewerViewport.setPointerCapture(event.pointerId);
+    viewerViewport.classList.add('is-dragging');
+  });
+  viewerViewport.addEventListener('pointermove', event => {
+    if (!drag) return;
+    viewerViewport.scrollLeft = drag.left - (event.clientX - drag.x);
+    viewerViewport.scrollTop = drag.top - (event.clientY - drag.y);
+  });
+  function endDrag() { drag = null; viewerViewport.classList.remove('is-dragging'); }
+  viewerViewport.addEventListener('pointerup', endDrag);
+  viewerViewport.addEventListener('pointercancel', endDrag);
+  viewerViewport.addEventListener('lostpointercapture', endDrag);
+
+  document.querySelectorAll('.project-image').forEach(link => {
+    link.setAttribute('aria-haspopup', 'dialog');
+    link.addEventListener('click', event => {
+      // Keep normal link behaviour for modified clicks and browsers without dialogs.
+      if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || !imageViewer.showModal) return;
+      event.preventDefault();
+      const image = link.querySelector('img');
+      imageTrigger = link;
+      viewerImage.src = link.href;
+      viewerImage.alt = image.alt;
+      zoom = 1;
+      viewerCaption.textContent = link.closest('figure').querySelector('figcaption').textContent;
+      imageViewer.showModal();
+      document.body.classList.add('image-viewer-open');
+      requestAnimationFrame(() => renderZoom(true));
     });
-    document.title = 'James Bell — ' + (current === home ? 'Portfolio' : current.querySelector('h1').textContent);
-    hovered = false;
-    keyboardFocused = false;
-    configure();
+  });
+
+  imageViewer.querySelector('.image-viewer-close').addEventListener('click', () => imageViewer.close());
+  imageViewer.addEventListener('close', () => {
+    endDrag();
+    document.body.classList.remove('image-viewer-open');
+    if (imageTrigger && !imageTrigger.closest('.page').hidden) {
+      imageTrigger.focus({ preventScroll: true });
+    }
+  });
+  imageViewer.addEventListener('click', event => {
+    const bounds = imageViewer.getBoundingClientRect();
+    if (event.target === imageViewer &&
+      (event.clientX < bounds.left || event.clientX > bounds.right ||
+       event.clientY < bounds.top || event.clientY > bounds.bottom)) {
+      imageViewer.close();
+    }
+  });
+
+  function render(moveFocus = false) {
+    if (imageViewer.open) imageViewer.close();
+    const id = location.hash.slice(1) || 'about';
+
+    if (id === 'content') {
+      main.focus();
+      return;
+    }
+
+    const current = pages.find(page => page.id === id) || home;
+
+    pages.forEach(page => {
+      page.hidden = page !== current;
+    });
+
+    document.querySelectorAll('.site-header nav a[href^="#"]')
+      .forEach(link => {
+        const active =
+          link.hash === '#' + current.id ||
+          (link.hasAttribute('data-home-link') &&
+            current.id !== 'direct-coil');
+
+        if (active) {
+          link.setAttribute('aria-current', 'page');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+
+    document.title = 'James Bell — ' +
+      (current === home
+        ? 'Portfolio'
+        : current.querySelector('h1').textContent);
+
     if (moveFocus) {
       main.focus({ preventScroll: true });
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      window.scrollTo({ top: 0, behavior: 'auto' });
     }
   }
-  carousel.addEventListener('pointerenter', event => {
-    if (event.pointerType === 'mouse') hovered = true;
-  });
-  carousel.addEventListener('pointerleave', () => { hovered = false; });
-  carousel.addEventListener('focusin', event => {
-    keyboardFocused = true;
-    const index = cards.indexOf(event.target.closest('.project-card'));
-    if (looping && index >= 0) {
-      const step = cycleWidth / cards.length;
-      const left = index * step;
-      const visibleWidth = carousel.clientWidth - 2 * parseFloat(getComputedStyle(carousel).paddingLeft);
-      if (left < offset || left + cards[index].offsetWidth > offset + visibleWidth) offset = left;
-      carousel.scrollLeft = 0;
-      draw();
-    }
-  });
-  carousel.addEventListener('focusout', () => {
-    queueMicrotask(() => { keyboardFocused = carousel.contains(document.activeElement); });
-  });
-  motionButton.addEventListener('click', () => { userPaused = !userPaused; updateMotionLabel(); });
-  document.querySelectorAll('[data-direction]').forEach(button => {
-    button.addEventListener('click', () => {
-      const step = cycleWidth / cards.length;
-      const direction = Number(button.dataset.direction);
-      if (looping && cycleWidth) {
-        offset = ((Math.round(offset / step) + direction) * step + cycleWidth) % cycleWidth;
-        navigatingUntil = performance.now() + 1800;
-        draw();
-      } else {
-        carousel.scrollBy({ left: direction * step, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
-      }
-    });
-  });
+
   window.addEventListener('hashchange', () => render(true));
-  window.addEventListener('resize', configure);
-  reducedMotion.addEventListener('change', configure);
-  touchLayout.addEventListener('change', configure);
-  document.addEventListener('visibilitychange', () => { lastTime = 0; });
-  window.addEventListener('pagehide', () => cancelAnimationFrame(frame));
-  window.addEventListener('pageshow', event => {
-    if (event.persisted) { lastTime = 0; frame = requestAnimationFrame(tick); }
-  });
-  controls.hidden = false;
   render();
-  frame = requestAnimationFrame(tick);
 })();
