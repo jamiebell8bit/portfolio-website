@@ -4,6 +4,23 @@
   const pages = [...document.querySelectorAll('.page')];
   const main = document.querySelector('main');
   const home = document.querySelector('#about');
+  const contactEmail = document.querySelector('#contact-email');
+  const copyEmail = document.querySelector('#copy-email');
+  const copyEmailStatus = document.querySelector('#copy-email-status');
+  copyEmail.hidden = false;
+  copyEmail.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(contactEmail.textContent.trim());
+      copyEmailStatus.textContent = 'Email copied. Paste it into your email app.';
+    } catch {
+      const range = document.createRange();
+      range.selectNodeContents(contactEmail);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      copyEmailStatus.textContent = 'Select and copy the email address above, then paste it into your email app.';
+    }
+  });
   const imageViewer = document.querySelector('#image-viewer');
   const viewerImage = document.querySelector('#image-viewer-image');
   const viewerCaption = document.querySelector('#image-viewer-caption');

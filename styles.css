@@ -115,6 +115,12 @@ figcaption { font-size: .75rem; line-height: 1.6; color: var(--muted); margin-to
 .next-project { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); margin-top: 40px; padding-block: 24px 32px; }
 .next-project > span { color: var(--muted); font-size: .875rem; }
 .next-project strong { font-size: 1.3rem; font-weight: 550; }
+.contact-copy { padding-bottom: 40px; }
+.detail-copy .contact-email { color: var(--ink); font-size: clamp(1.1rem, 4vw, 1.5rem); overflow-wrap: anywhere; user-select: all; }
+.contact-button { padding: 12px 18px; border: 1px solid var(--accent); border-radius: 4px; background: var(--accent); color: white; }
+.contact-button:hover { background: var(--ink); border-color: var(--ink); }
+.detail-copy .contact-status { min-height: 1.7em; margin-top: 8px; font-size: .875rem; }
+.contact-link { text-decoration: underline; text-underline-offset: 4px; }
 @media (hover: hover) and (pointer: fine) {
   .project-card:hover { transform: translateY(-5px) scale(1.065); z-index: 3; }
   .project-card:hover .card-visual { box-shadow: 0 16px 24px #16271d26; }
