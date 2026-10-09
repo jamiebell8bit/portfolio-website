@@ -5,19 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="James Bell, Queen’s Computer Engineering graduate. Take a look at my projects and engineering experience.">
 <title>James Bell — Portfolio</title>
-<link rel="stylesheet" href="styles.css?v=18">
-<script src="navigation.js?v=7" defer></script>
+<link rel="stylesheet" href="styles.css?v=19">
+<script src="navigation.js?v=8" defer></script>
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
-<header class="site-header shell">
+<div class="header-band"><header class="site-header shell">
   <a class="name" href="#about">James Bell</a>
   <nav aria-label="Main navigation">
     <a href="#about" data-home-link aria-current="page">My work</a>
-    <a href="#direct-coil">Experience</a>
+    <a href="#about-me">About me</a>
     <a class="resume-link" href="James-Bell-Resume.pdf" download>Résumé <span aria-hidden="true">↓</span></a>
   </nav>
-</header>
+</header></div>
 <main id="content" tabindex="-1">
 <section id="about" class="page" aria-labelledby="about-heading">
   <div class="intro shell">
@@ -39,7 +39,7 @@
             <span class="card-type">Capstone project</span>
             <div class="card-caption"><h3>WetMaps</h3><p>Mapping Canada’s wetlands using satellite data.</p><span class="card-cta">Explore project <span aria-hidden="true">↗</span></span></div>
           </div>
-          <div class="card-foot"><span>01 / ML &amp; geospatial data</span><span>2025–26</span></div>
+          <div class="card-foot"><span>ML &amp; geospatial data</span><span>2025–26</span></div>
         </a>
         <a class="project-card direct-coil" href="#direct-coil" aria-label="Direct Coil. A year bringing custom heat-transfer equipment from drawings to production. View details.">
           <div class="card-visual">
@@ -47,7 +47,7 @@
             <span class="card-type">Engineering internship</span>
             <div class="card-caption"><h3>Direct Coil</h3><p>A year bringing custom heat-transfer equipment from drawings to production.</p><span class="card-cta">Explore experience <span aria-hidden="true">↗</span></span></div>
           </div>
-          <div class="card-foot"><span>02 / Design &amp; manufacturing</span><span>2024–25</span></div>
+          <div class="card-foot"><span>Design &amp; manufacturing</span><span>2024–25</span></div>
         </a>
         <a class="project-card receiptme" href="#receiptme" aria-label="ReceiptMe. Turning everyday receipts into personalised spending insights. View details.">
           <div class="card-visual">
@@ -55,7 +55,7 @@
             <span class="card-type">48-hour hackathon</span>
             <div class="card-caption"><h3>ReceiptMe</h3><p>Turning everyday receipts into personalised spending insights.</p><span class="card-cta">Explore project <span aria-hidden="true">↗</span></span></div>
           </div>
-          <div class="card-foot"><span>03 / Expenses &amp; AI insights</span><span>2025</span></div>
+          <div class="card-foot"><span>Expenses &amp; AI insights</span><span>2025</span></div>
         </a>
         <a class="project-card qrate" href="#qrate" aria-label="qRate. A platform for students to find and share course and professor reviews. View details.">
           <div class="card-visual">
@@ -63,7 +63,14 @@
             <span class="card-type">Web application</span>
             <div class="card-caption"><h3>qRate</h3><p>A platform for students to find and share course and professor reviews.</p><span class="card-cta">Explore project <span aria-hidden="true">↗</span></span></div>
           </div>
-          <div class="card-foot"><span>04 / Full-stack development</span><span>2025</span></div>
+          <div class="card-foot"><span>Full-stack development</span><span>2025</span></div>
+        </a>
+        <a class="project-card personal-interests" href="#about-me" aria-label="Personal interests. About me.">
+          <div class="card-visual">
+            <img src="pics/Jamie.jpg" alt="James Bell outdoors with a rainbow behind him" loading="lazy">
+            <div class="card-caption"><h3>Personal interests</h3><span class="card-cta">About me</span></div>
+          </div>
+          <div class="card-foot"><span>Outside work</span></div>
         </a>
       </div></div>
     </div>
@@ -175,6 +182,18 @@
 <p id="copy-email-status" class="contact-status" role="status"></p>
 <p>You can also find me on <a class="contact-link" href="https://www.linkedin.com/in/james-bell13">LinkedIn</a>.</p>
 </div>
+</section>
+<section id="about-me" class="page detail shell about-page" aria-labelledby="about-me-heading" hidden>
+  <a class="back" href="#about">← All work</a>
+  <div class="detail-heading"><h1 id="about-me-heading">About me</h1></div>
+  <article class="about-letter" aria-label="Introduction">
+    <p class="about-lead">I’m James, a Computer Engineering graduate interested in how things work—and how to make them work better.</p>
+    <p>Based in Calgary. Open to graduate roles in Canada and the UK.</p>
+  </article>
+  <section class="interests-section" aria-labelledby="interests-heading">
+    <h2 id="interests-heading">Personal interests</h2>
+    <figure class="interests-photo"><img src="pics/Jamie.jpg" alt="James Bell outdoors with a rainbow behind him" loading="lazy"></figure>
+  </section>
 </section>
 <noscript><style>.page[hidden]{display:block!important}.carousel{overflow-x:auto}</style><p class="shell">JavaScript is off. Scroll or swipe through the projects; details are below.</p></noscript>
 </main>

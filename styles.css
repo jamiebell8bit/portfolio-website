@@ -38,6 +38,20 @@ p { margin: 0; line-height: 1.65; }
 .site-header nav a[aria-current] { text-decoration: underline; text-underline-offset: 7px; text-decoration-color: var(--accent); }
 .site-header nav a:hover, .site-footer a:hover { color: var(--accent); }
 .site-header nav .resume-link { display: inline-flex; gap: 22px; align-items: center; padding: 10px 17px; border: 1px solid #c5cec9; border-radius: 4px; }
+.header-band { background: #174b3d; color: #f4f8f5; }
+.header-band .site-header { border-bottom: 0; }
+.header-band .site-header nav a[aria-current] { text-decoration-color: #b1e1cb; }
+.header-band .site-header nav a:hover { color: #b1e1cb; }
+.header-band .site-header nav .resume-link { border-color: #91b5a4; }
+.header-band a:focus-visible { outline-color: #b1e1cb; }
+.about-page { min-height: 65vh; padding-bottom: 64px; }
+.about-letter { max-width: 760px; }
+.about-letter p { font-size: 1.125rem; line-height: 1.8; margin-bottom: 24px; color: #4c5751; }
+.about-letter .about-lead { color: var(--ink); font-size: clamp(1.4rem, 2.5vw, 1.9rem); line-height: 1.5; }
+.interests-section { margin-top: 48px; max-width: 760px; }
+.interests-section h2 { font-size: 1.3rem; font-weight: 550; margin-bottom: 24px; }
+.interests-photo { max-width: 560px; }
+.interests-photo img { width: 100%; height: auto; display: block; border-radius: 8px; }
 main { outline: none; }
 .intro { display: grid; grid-template-columns: minmax(0, 1fr) 460px; gap: 40px; align-items: start; padding-block: 53px 43px; }
 .eyebrow, .meta { font-size: .75rem; letter-spacing: .075em; text-transform: uppercase; font-weight: 600; color: var(--muted); margin-bottom: 21px; }
@@ -138,7 +152,7 @@ figcaption { font-size: .75rem; line-height: 1.6; color: var(--muted); margin-to
 }
 @media (max-width: 760px) {
   :root { --card-width: 290px; --card-gap: 16px; }
-  .site-header { min-height: 78px; gap: 16px; }
+  .site-header { min-height: 78px; gap: 16px; flex-wrap: wrap; padding-block: 18px; }
   .name { font-size: 20px; }
   .site-header nav { gap: 18px; font-size: .875rem; }
   .site-header nav .resume-link { padding: 8px 11px; gap: 10px; }
@@ -336,6 +350,7 @@ body.image-viewer-open { overflow: hidden; }
 .carousel .direct-coil .card-visual img {
   object-fit: cover;
 }
+.carousel .personal-interests .card-visual img { object-fit: cover; object-position: center 38%; }
 
 .carousel .card-type {
   background: #fffffff2;

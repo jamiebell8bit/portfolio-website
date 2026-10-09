@@ -150,7 +150,7 @@
         const active =
           link.hash === '#' + current.id ||
           (link.hasAttribute('data-home-link') &&
-            current.id !== 'direct-coil');
+            ['wetmaps', 'direct-coil', 'receiptme', 'qrate'].includes(current.id));
 
         if (active) {
           link.setAttribute('aria-current', 'page');
