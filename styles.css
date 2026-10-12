@@ -45,13 +45,19 @@ p { margin: 0; line-height: 1.65; }
 .header-band .site-header nav .resume-link { border-color: #91b5a4; }
 .header-band a:focus-visible { outline-color: #b1e1cb; }
 .about-page { min-height: 65vh; padding-bottom: 64px; }
-.about-letter { max-width: 760px; }
+.about-layout { display: grid; grid-template-columns: minmax(0, 680px) minmax(0, 360px); gap: clamp(32px, 5vw, 72px); align-items: start; }
+.about-letter { max-width: 680px; }
 .about-letter p { font-size: 1.125rem; line-height: 1.8; margin-bottom: 24px; color: #4c5751; }
-.about-letter .about-lead { color: var(--ink); font-size: clamp(1.4rem, 2.5vw, 1.9rem); line-height: 1.5; }
-.interests-section { margin-top: 48px; max-width: 760px; }
-.interests-section h2 { font-size: 1.3rem; font-weight: 550; margin-bottom: 24px; }
-.interests-photo { max-width: 560px; }
-.interests-photo img { width: 100%; height: auto; display: block; border-radius: 8px; }
+.about-letter .about-lead { color: var(--ink); font-size: clamp(1.2rem, 2vw, 1.4rem); line-height: 1.75; }
+.about-photos { display: grid; gap: 32px; }
+.about-photos img { display: block; width: 100%; height: auto; border-radius: 8px; }
+@media (max-width: 960px) {
+  .about-layout { grid-template-columns: 1fr; gap: 20px; }
+  .about-photos { max-width: 680px; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+}
+@media (max-width: 540px) {
+  .about-photos { grid-template-columns: 1fr; }
+}
 main { outline: none; }
 .intro { display: grid; grid-template-columns: minmax(0, 1fr) 460px; gap: 40px; align-items: start; padding-block: 53px 43px; }
 .eyebrow, .meta { font-size: .75rem; letter-spacing: .075em; text-transform: uppercase; font-weight: 600; color: var(--muted); margin-bottom: 21px; }
